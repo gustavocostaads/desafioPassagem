@@ -14,14 +14,26 @@
     <p style="color: lightblue">Faça a viagem dos seus sonhos</p>
     <fieldset>
       <legend>Dados</legend>
-      <p>País de origem:</p>
-      <select id="select-paisOrigin"></select>
+      <p>País de origem:{{countries}}</p>
+      <select id="select-paisOrigin" v-model="listaPais"></select>
+      <br>
+      <input type="text" id="input-paisOrigem" v-model="paisOrigem"> <br>
+      <input type="text" id="input-valorPaisOrigem" v-model="valorPaisOrigem">
       <p>Cidade de origem:</p>
-      <select id="select-paisOrigin"></select>
+      <select id="select-cidadeOrigin" v-model="listaCidade"></select>
+      <br>
+      <input type="text" id="input-cidadeOrigem" v-model="cidadeOrigem"> <br>
+      <input type="text" id="input-valorCidadeOrigem" v-model="valorCidadeOrigem">
       <p>País de destino:</p>
-      <select id="select-paisOrigin"></select>
+      <select id="select-paisDestino" v-model="listaPais"></select>
+      <br>
+      <input type="text" id="input-paisDestino" v-model="paisDestino"> <br>
+      <input type="text" id="input-valorPaisDestino" v-model="valorPaisDestino">
       <p>Cidade de destino:</p>
-      <select id="select-paisOrigin"></select>
+      <select id="select-cidadeDestino" v-model="listaCidade"></select>
+      <br>
+      <input type="text" id="input-cidadeDestino" v-model="cidadeDestino"> <br>
+      <input type="text" id="input-valorCidadeDestino" v-model="valorCidadeDestino">
       <!-- <p>{{age >= 18 ? 'Maior de idade' : 'Menor de idade'}}</p> -->
       <p>Adultos:</p>
       <button @click="decrementAdult">-</button>
@@ -41,10 +53,12 @@
       </fieldset>
         <br>
         <fieldset>
+
+
           <legend>Resumo da viagem</legend>
           <p>Origem: </p>
           <p>Destino: </p>
-          <p>Distância: </p>
+          <p>Distância: getDistance(1,1,1,1)</p>
           <p>{{adult}} adulto(s), {{teen}} criança(s)</p>
           <p>Tipo de vôo: Classe {{economic}} {{executive}}</p>
           <p>{{valorAdult}} por adulto</p>
@@ -54,6 +68,7 @@
           <p>Total Adulto: {{valorFinalAdulto}}</p>
           <p>Total Criança: {{valorFinalTeengit }}</p>
         </fieldset>
+        
         </div>
   
     
@@ -82,6 +97,7 @@
         }
       },      
       methods: {
+        
         incrementAdult() {
           this.adult++;
         },
@@ -98,11 +114,11 @@
 
         },
         getUser() {
-       axios
-         .get("http://localhost:3000/countries")
+       axios.get("http://localhost:3000/countries")
          .then((res) => {
-           console.log(res)
-         });
+          this.countries = response.data;
+      console.log(this.countries);
+      });
         },
        
         getDistance(originLatitude,
@@ -139,6 +155,9 @@
 
     const vm = Vue.createApp(app).mount("#passagem-aerea")
     </script>
+    <style>
+
+    </style>
 
 
 </body>
