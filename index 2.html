@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=deviCidadece-width, initial-scale=1.0">
+  <title>Desafio</title>
+</head>
+<body>
+  
+  
+  <div id="passagem-aerea">
+    <p style="color: lightblue">Faça a viagem dos seus sonhos</p>
+    <fieldset>
+      <legend>Dados</legend>
+      <p>País de origem:</p>
+      <select id="select-paisOrigin"></select>
+      <p>Cidade de origem:</p>
+      <select id="select-paisOrigin"></select>
+      <p>País de destino:</p>
+      <select id="select-paisOrigin"></select>
+      <p>Cidade de destino:</p>
+      <select id="select-paisOrigin"></select>
+      <!-- <p>{{age >= 18 ? 'Maior de idade' : 'Menor de idade'}}</p> -->
+      <p>Adultos:</p>
+      <button @click="decrementAdult">-</button>
+      <span>{{adult}}</span>
+        <button @click="incrementAdult">+</button>
+        <p>Crianças:</p>
+        <button @click="decrementTeen">-</button>
+        <span>{{teen}}</span>
+        <button @click="incrementTeen">+</button>
+        <br><br>
+        <input id="economica" type="radio">
+        <span>Econômica:</span>
+        <input id="executiva" type="radio">
+        <span>Executiva:</span>
+        <p>Utilizar {{milhas}} milhas</p>
+        <input id="economica" type="range" v-model="milhas">
+      </fieldset>
+        <br>
+        <fieldset>
+          <legend>Resumo da viagem</legend>
+          <p>Origem: </p>
+          <p>Destino: </p>
+          <p>Distância: </p>
+          <p>0 adulto(s), 0 criança(s)</p>
+          <p>Tipo de vôo: Classe </p>
+        </fieldset>
+        </div>
+  
+    
+  <script src="https://unpkg.com/vue@3.0.4"></script>
+  <script>
+  const app = {
+      data() {
+        return {
+          htmlContent: "<p style='color: lightblue;'>Faça a viagem dos seus sonhos</p>",
+          firstName: "John",
+          lastName: "Snow",
+          adult: 0,
+          teen: 0,
+          milhas: 0,
+          economic: false,
+          executive: false,
+          grade: 0,
+          isUserLogged: false,
+          count: 1,
+          carBrands: ["VW", "Fiat", "Renault", "ford"],
+          cars: [{ name: "Ka", brand: "Ford"}, { name: "Palio", brand: "Fiat"}, { name: "Sandero", brand: "Renault"}],
+          car: []
+        }
+      },
+      methods: {
+        incrementAdult() {
+          this.adult++;
+        },
+        decrementAdult() {
+          this.adult--;
+        },
+        incrementTeen() {
+          this.teen++;
+        },
+        decrementTeen() {
+          this.teen--;
+        },
+        getFullName() {
+          return `${this.firstName} ${this.lastName}`;
+        }
+      },
+    }
+
+    const vm = Vue.createApp(app).mount("#passagem-aerea")
+    </script>
+</body>
+</html>
