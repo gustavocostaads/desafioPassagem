@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=deviCidadece-width, initial-scale=1.0">
+  
   <title>Desafio</title>
 </head>
 <body>
@@ -51,13 +52,16 @@
           <p>Milhas: {{milhas}}</p>
           <p>Valor abatido por milhas: {{valorMilhas}}</p>
           <p>Total Adulto: {{valorFinalAdulto}}</p>
-          <p>Total Criança: {{valorFinalTeen}}</p>
+          <p>Total Criança: {{valorFinalTeengit }}</p>
         </fieldset>
         </div>
   
     
   <script src="https://unpkg.com/vue@3.0.4"></script>
+ 
   <script>
+   
+
   const app = {
       data() {
         return {
@@ -76,7 +80,7 @@
           cars: [{ name: "Ka", brand: "Ford"}, { name: "Palio", brand: "Fiat"}, { name: "Sandero", brand: "Renault"}],
           car: []
         }
-      },
+      },      
       methods: {
         incrementAdult() {
           this.adult++;
@@ -90,13 +94,52 @@
         decrementTeen() {
           this.teen--;
         },
-        getFullName() {
-          return `${this.firstName} ${this.lastName}`;
-        }
+        obterDados() {
+
+        },
+        getUser() {
+       axios
+         .get("http://localhost:3000/countries")
+         .then((res) => {
+           console.log(res)
+         });
+        },
+       
+        getDistance(originLatitude,
+        originLongitude,
+        destinationLatitude,
+        destinationLongitude) {
+        const EARTH_RADIUS = 6_371.071; // Earth
+        const diffLatitudeRadians = degreesToRadians(
+        destinationLatitude - originLatitude
+        );
+        const diffLongitudeRadians = degreesToRadians(
+        destinationLongitude - originLongitude
+        );
+        const originLatitudeRadians = degreesToRadians(originLatitude);
+        const destinationLatitudeRadians = degreesToRadians(destinationLatitude);
+        const kmDistance = 2 * EARTH_RADIUS *
+        Math.asin(
+        Math.sqrt(
+        Math.sin(diffLatitudeRadians / 2) * Math.sin(diffLatitudeRadians / 2) + 
+        Math.cos(originLatitudeRadians) *
+        Math.cos(destinationLatitudeRadians) *
+        Math.sin(diffLongitudeRadians / 2) *
+        Math.sin(diffLongitudeRadians / 2)
+        )
+        );
+        return kmDistance;
+        },
+
+        // getFullName() {
+        //   return `${this.firstName} ${this.lastName}`;
+        // }
       },
     }
 
     const vm = Vue.createApp(app).mount("#passagem-aerea")
     </script>
+
+
 </body>
 </html>
