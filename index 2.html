@@ -44,8 +44,14 @@
           <p>Origem: </p>
           <p>Destino: </p>
           <p>Distância: </p>
-          <p>0 adulto(s), 0 criança(s)</p>
-          <p>Tipo de vôo: Classe </p>
+          <p>{{adult}} adulto(s), {{teen}} criança(s)</p>
+          <p>Tipo de vôo: Classe {{economic}} {{executive}}</p>
+          <p>{{valorAdult}} por adulto</p>
+          <p>{{valorTeen}} por criança</p>
+          <p>Milhas: {{milhas}}</p>
+          <p>Valor abatido por milhas: {{valorMilhas}}</p>
+          <p>Total Adulto: {{valorFinalAdulto}}</p>
+          <p>Total Criança: {{valorFinalTeen}}</p>
         </fieldset>
         </div>
   
@@ -61,8 +67,8 @@
           adult: 0,
           teen: 0,
           milhas: 0,
-          economic: false,
-          executive: false,
+          economic: "Economica",
+          executive: "Executiva",
           grade: 0,
           isUserLogged: false,
           count: 1,
